@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="shortcut icon" href="<%= BASE_URL %>favicon.ico" />
+    <title>printPDF</title>
+   
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Noto+Serif+Thai:wght@200&family=Sarabun:wght@100&display=swap");
+
+      body {
+        margin: 0;
+        padding: 0;
+
+        font-family: "Noto Serif Thai", serif;
+        font-family: "Sarabun", sans-serif;
+        font-size: 14px;
+        color: black;
+      }
+      table {
+        border-collapse: collapse;
+      }
+
+      /* ตารางแรก */
+      .table1 {
+        text-align: center;
+      }
+      .TT1,
+      .TT2 {
+        width: 50%;
+        padding: 10px;
+      }
+      .TTD1 {
+        height: 165px;
+        width: 500px;
+        /* padding:10px ; */
+      }
+      .T1 {
+        width: 20px;
+        padding: 10px;
+      }
+      .T4 {
+        width: 200px;
+        padding: 10px;
+      }
+      .T5,
+      .T6 {
+        width: 70px;
+        padding: 10px;
+      }
+      .T2,
+      .T3 {
+        width: 135px;
+        padding: 10px;
+      }
+
+      th,
+      td {
+        border: 1px solid black;
+      }
+
+      .box1 {
+        position: absolute;
+        right: 40px;
+        top: -19px;
+      }
+
+      .box2 {
+        position: absolute;
+        right: 0px;
+        top: 36px;
+        height: 100px;
+      }
+      .box3 {
+        position: absolute;
+        top: 11px;
+        left: 0px;
+      }
+      .box4 {
+        position: absolute;
+        top: 61px;
+        left: 130px;
+        font-size: 18px;
+        font-weight: 1px;
+      }
+      .box5 {
+        position: absolute;
+        top: 126px;
+        left: 0px;
+        line-height: 2;
+      }
+      .box6 {
+        position: absolute;
+        top: 191px;
+        left: 0px;
+      }
+      .box7 {
+        position: absolute;
+        top: 221px;
+        left: 20px;
+      }
+      .box8 {
+        position: absolute;
+        top: 251px;
+        left: 0px;
+      }
+      /* ตาราง3 */
+      .box9 {
+        position: absolute;
+        top: 271px;
+        left: 0px;
+      }
+      .box10 {
+        position: absolute;
+        top: 411px;
+        left: 0px;
+      }
+      .box11 {
+        position: absolute;
+        top: 470px;
+        left: 0px;
+      }
+      .box12 {
+        position: absolute;
+        top: 490px;
+        left: 90px;
+      }
+      .box13 {
+        position: absolute;
+        top: 530px;
+        left: 510px;
+      }
+      .box14 {
+        position: absolute;
+        top: 560px;
+        left: 0px;
+      }
+      .box15 {
+        position: absolute;
+        top: 580px;
+        left: 0px;
+      }
+      .box16 {
+        position: absolute;
+        top: 600px;
+        left: 0px;
+      }
+    </style>
+  </head>
+  <body>
+
+    
+    
+    <div ref="from" id="save">
+
+      <!-- <h1>{{getdata}}</h1> -->
+      <p class="box1"><b>แบบ-พด.-05</b></p>
+      <table class="box2">
+        <tr>
+          <th>ผู้ส่งเอกสาร</th>
+          <th>ผู้รับเอกสาร</th>
+        </tr>
+        <tr>
+          <td style="padding: 10px">
+            วันที่....................... <br />
+            เวลา....................... <br /><br />
+            ลงชื่อ...................... <br />
+          </td>
+          <td style="padding: 10px">
+            วันที่....................... <br />
+            เวลา....................... <br /><br />
+            ลงชื่อ...................... <br />
+          </td>
+        </tr>
+      </table>
+
+      <img
+        class="box3"
+        src="./asd.png"
+        alt=""
+        style="width: 60px; height: 100px"
+      />
+      <p class="box4"><b>แบบขอจ้างซ่อม โดยวิธีเฉพาะเจาะจง</b></p>
+
+      <div class="box5">
+        <b>ส่วนงาน</b> คณะพยาบาลศาสตร์ …………………………………………………………… โทร.48243,150
+        <br />
+        <b>ที่</b> อว
+        660301.5.1.2../…………………………………วันที่……………………….………………………….........................................
+      </div>
+      <div class="box6">
+        <b
+          >เรียน&nbsp;&nbsp;&nbsp; คณบดีคณะพยาบาลศาสตร์
+          …………………………………......................................................................……………(หัวหน้าหน่วยงาน)</b
+        >
+      </div>
+      <div class="box7">
+        ด้วย
+        ชื่อหน่วยงาน.........................................................................................................มีความประสงค์จะจ้างซ่อมทรัพย์สินดังรายการต่อไปนี้
+      </div>
+      <div class="box8">
+        เพื่อ <b>(เหตุผลความจำเป็นในการจ้างซ่อมทรัพย์สิน)</b>
+        .....................................................................................................................................................
+      </div>
+      <div class="box9">
+        <table class="table1">
+          <tr>
+            <th class="T1">ที่</th>
+            <th class="T2">ทรัพย์สินที่ต้องการซ้อม</th>
+            <th class="T3">หมายเลขครุภัณฑ์</th>
+            <th class="T4">สภาพชำรุดโดยละเอียด</th>
+            <th class="T5">วงเงินที่จะซ่อม</th>
+            <th class="T6">ราคาที่ซ่อมครั้งสุดท้าย</th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td></td>
+            <td></td>
+            <td>
+              asd <br />
+              asd
+            </td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td></td>
+            <td></td>
+            <td>
+              asd <br />
+              asd
+            </td>
+            <td></td>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+      <div class="box10">
+        งานช่างได้ตรวจสอบการชำรุดแล้วปรากฏว่า..............................................................................................................................................................
+      </div>
+      <div class="box11">
+        เพื่อให้สามารถใช้งานต่อไปได้ตามปกติ
+        จึงใคร่ขออนุมัติดำเนินการจ้างซ่อมวัสดุ / ครุภัณฑ์ดังกล่าวด้วย
+      </div>
+      <div class="box12">
+        <b> จึงเรียนมาเพื่อโปรดพิจารณาหากเห็นชอบโปรดอนุมัติ</b> <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <b>………………………………………… </b>
+      </div>
+      <div class="box13">
+        <b> (..............................................)</b>
+      </div>
+      <div class="box14">
+        <b
+          >ขอเสนอรายชื่อเพื่อแต่งตั้งเป็นคณะกรรมการตรวจรับพัสดุ
+          และได้แจ้งผู้ถูกเสนอชื่อให้ทราบทุกท่านแล้ว ดังนี้</b
+        >
+      </div>
+      <div class="box15">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.………….…………….…………..&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        2.………….…………….…………..&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        3.………….…………….…………..
+      </div>
+
+      <div class="box16">
+        <table class="table2">
+          <tr>
+            <th class="TT1">สำหรับเจ้าหน้าที่ผู้รับผิดชอบ/เจ้าของโครงการ</th>
+            <th class="TT1">ความเห็นหัวหน้างานยุทธศาสตร์และการคลัง</th>
+          </tr>
+          <tr>
+            <td class="TTD1" style="line-height: 1.9">
+              &nbsp;&nbsp; <b>เรียน คณบดี/ผู้อำนวยการ</b> <br />
+              &nbsp;&nbsp; เพื่อโปรดพิจารณาให้ความเห็นชอบในการจัดซื้อวัสดุ
+              <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ลงชื่อ.............................................................
+              <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(.............................................................)
+              <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ตำแหน่ง........................................................<br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;วันที่..............................................................
+              <br />
+              &nbsp;&nbsp;โทรศัพท์มือถือ.............................................โทรภายใน........................
+            </td>
+            <td class="TTD1" style="line-height: 1.7">
+              &nbsp;&nbsp;<b>เรียน คณบดี ผ่านผู้อำนวยการกองบริหารงานคณะฯ</b>
+              <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [&nbsp; ]
+              พิจารณาแล้ว เห็นควรดำเนินการจัดซื้อวัสดุต่อไป <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [&nbsp; ]
+              เห็นควรแก้ไข/ตรวจสอบ เนื่องจาก..................................
+              <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ลงชื่อ...................................................
+              <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              <b>
+                (นางสาวณัฐิดา ประสาร) <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;นักวิชาการเงินและบัญชี
+                ชำนาญการ <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;รักษาการแทนหัวหน้างานยุทธศาสตร์และการคลัง
+                <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;วันที่.......................................................................</b
+              >
+            </td>
+          </tr>
+          <tr>
+            <th style="padding: 10px">
+              ความเห็นหัวหน้าเจ้าหน้าที่/ผู้อำนวยการฯ
+            </th>
+            <th style="padding: 10px">คณบดี</th>
+          </tr>
+          <tr>
+            <td class="TTD1" style="line-height: 1.7">
+              <b
+                >&nbsp;&nbsp; เรียน ( &nbsp;&nbsp;&nbsp; )
+                คณบดีคณะพยาบาลศาสตร์</b
+              >
+              <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ &nbsp;] พิจารณาแล้ว
+              เห็นควรดำเนินการจัดจ้างต่อไป <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ &nbsp;]
+              เห็นควรแก้ไข/ตรวจสอบ..................................... <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ลงชื่อ.........................................................
+              <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <b
+                >(นายสุวิต ผิวพันคำ) <br />
+                &nbsp;&nbsp;&nbsp;ผู้อำนวยการกองบริหารงานคณะ คณะพยาบาลศาสตร์
+                <br
+              /></b>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              วันที่.............................................
+            </td>
+            <td class="TTD1" style="line-height: 2">
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;
+              ] เห็นชอบ และดำเนินการต่อไป <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[
+              &nbsp;] ไม่เห็นชอบ
+              เนื่องจาก............................................... <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ลงชื่อ..........................................................
+              <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(.......................................................)
+              <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ตำแหน่ง.....................................................
+              <br />
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;วันที่...............................................................
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div>
+        <!-- <button @click="printPDF">Print PDF</button> -->
+      </div>
+      <!-- <button @click="gg">jsPDF</button> -->
+    </div>
+
+    <div id="app">
+      {{ message }}
+    </div>
+  </body>
+
+
+  
+
+  <!-- <script>
+    import axios from 'axios';
+    export default {
+      
+        name: "save",
+        data() {
+          return {
+            id: "",
+            getdata:"",
+            getdataMPY:'',
+            // getdatasave:"",
+            addfromupdate:[],
+           
+           
+          };
+        },
+        methods: {
+          getID() {
+            if (localStorage.getItem("ID")) {
+              this.id = localStorage.getItem("ID");
+              axios
+                .post("http://localhost/PJ1/connect.php", {
+                  id: this.id,
+                  action: "searchdata",
+                })
+                .then((red) => {
+                  this.getdata = red.data;
+                });
+                axios
+                .post("http://localhost/PJ1/connect.php", {
+                  id: this.id,
+                  action: "searchdataMPY",
+                })
+                .then((red) => {
+                  this.getdataMPY = red.data;
+                });
+               
+            }
+          },
+        
+          // print() {
+          //   // e.preventDefault();
+          //   axios
+          //     .post("http://localhost/PJ1/connect.php", {
+          //       before: this.before,
+          //       after: this.after,
+          //       id: this.id,
+          //       status: "รอการอนุมัติ",
+          //       action: "MPYsave",
+          //     })
+          //     .then( (red) => {
+          //       alert (red.data);
+          //       this.$router.push({name: 'save'})
+          //     });
+             
+          // }
+        },
+        created() {
+          this.getID();
+          // this.push1();
+        },
+      
+    }
+    </script> -->
+
+
+</html>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      message: 'Hello World!'
+    }
+  })
+  </script>
