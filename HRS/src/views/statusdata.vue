@@ -112,12 +112,12 @@ export default {
     };
   },
   methods: {
-    checklogin() {
-      if (!localStorage.getItem("username")) {
-        this.$router.push({ name: "login" });
-      } else {
-      }
-    },
+    // checklogin() {
+    //   if (!localStorage.getItem("username")) {
+    //     this.$router.push({ name: "login" });
+    //   } else {
+    //   }
+    // },
     getalldata() {
       axios
         .post("http://localhost:/PJ1/connect.php", {

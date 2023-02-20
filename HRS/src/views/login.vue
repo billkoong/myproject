@@ -31,17 +31,22 @@ export default {
   },
   methods: {
     signin() {
-      this.username = this.$refs.username.value,
-        this.password = this.$refs.password.value,
+
+        this.username = this.$refs.username.value
+        this.password = this.$refs.password.value
+      const url = 'https://repairhiresystem.000webhostapp.com/con2.php';
+      const options = {
+      params: {
+      action: "signin",
+      username: this.username,
+      pass: this.password,
+       }
+      };
         axios
-          .post("http://localhost:/PJ1/connect.php", {
-            username: this.username,
-            pass: this.password,
-            action: "signin",
-          })
+        .get(url, options)
           .then((red) => {
             this.output = red.data;
-            // console.log(red.data);
+            console.log(red.data);
             if (red.data == "username หรือ password ไม่ถูกต้อง" ||red.data == "กรุณาใส่ username" ||red.data == "กรุณาใส่ password") {
              alert(red.data);
           }else if(red.data[0].username = this.username ) {
