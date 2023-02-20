@@ -37,45 +37,7 @@
       </tr>
     </table>
   </div>
-<!-- 
-  <h1 id="font1">อัปเดตรายการขอซ่อมวัสดุในขั้นตอนสุดท้าย</h1>
-  <div class="tb2">
-    <table>
-      <tr>
-        <th>ที่</th>
-        <th>ทรัพย์สินที่ต้องการซ่อม</th>
-        <th>หมายเลขครุภัณฑ์</th>
-        <th>สภาพชำรุดโดยละเอียด</th>
-        <th>สถานะ</th>
-        <th>รายละเอียด</th>
-      </tr>
-      <tr v-for="(item, index) in getall2" :key="index" class="tb-bt">
-        <td>{{ index + 1 }}</td>
-        <td>
-          <tr v-for="(item, index) in getall2[index]" :key="index">
-            <td>{{ item.RP_property }}</td>
-          </tr>
-        </td>
-        <td>
-          <tr v-for="(item, index) in getall2[index]" :key="index">
-            <td>{{ item.RP_property_number }}</td>
-          </tr>
-        </td>
-        <td>
-          <tr v-for="(item, index) in getall2[index]" :key="index">
-            <td>{{ item.RP_disrepair }}</td>
-          </tr>
-        </td>
-        <td>{{ item[0].status }}</td>
 
-        <td>
-          <button @click="adminReport3(item[0].ID_RP)" id="btn-tb1">
-            อัปเดตรายการขอซ่อม
-          </button>
-        </td>
-      </tr>
-    </table>
-  </div> -->
 </template>
 
 <script>
@@ -89,6 +51,7 @@ export default {
       getall: "",
       getall2: "",
       id: "",
+      url: 'https://repairhiresystem.000webhostapp.com/con2.php'
     };
   },
   methods: {
@@ -99,10 +62,20 @@ export default {
       }
     },
     getalldata() {
-      axios
-        .post("http://localhost:/PJ1/connect.php", {
+      const options = {
+      params: {
           action: "MPYcheck",
-        })
+          
+        }
+      };
+      const options2 = {
+      params: {
+          
+          action: "MPYcheck2",
+        }
+      };
+      axios
+        .get(this.url, options)
         .then((red) => {
           // console.log(red.data);
           if (red.data == "ไม่พบข้อมูล") {
@@ -110,17 +83,7 @@ export default {
             this.getall = red.data;
           }
         });
-      axios
-        .post("http://localhost:/PJ1/connect.php", {
-          action: "MPYcheck2",
-        })
-        .then((red) => {
-          // console.log(red.data);
-          if (red.data == "ไม่พบข้อมูล") {
-          } else {
-            this.getall2 = red.data;
-          }
-        });
+    
     },
     adminReport2(ID_RP) {
       localStorage.setItem("ID_RP", ID_RP);

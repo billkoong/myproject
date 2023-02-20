@@ -59,41 +59,51 @@ export default {
       getall: "",
       getall2: "",
       id: "",
+      url: 'https://repairhiresystem.000webhostapp.com/con2.php'
     };
   },
   methods: {
-    checklogin() {
-      if (localStorage.getItem("pass") == "ครุภัณฑ์ทั่วไป เช่น พัดลม แอร์ หน้าต่าง" || localStorage.getItem("pass") == "ครุภัณฑ์อิเล็กทรอนิกส์ เช่น คอมพิวเตอร์ โน็ตบุ๊ก TV") {
-      } else {
-        this.$router.push({ name: "login" });
-      }
-    },
+    // checklogin() {
+    //   if (localStorage.getItem("pass") == "ครุภัณฑ์ทั่วไป เช่น พัดลม แอร์ หน้าต่าง" || localStorage.getItem("pass") == "ครุภัณฑ์อิเล็กทรอนิกส์ เช่น คอมพิวเตอร์ โน็ตบุ๊ก TV") {
+    //   } else {
+    //     this.$router.push({ name: "login" });
+    //   }
+    // },
     getalldata() {
-      axios
-        .post("http://localhost:/PJ1/connect.php", {
-          action: "statusdata",
+      const options = {
+      params: {
+        action: "statusdata",
           pass: localStorage.getItem("pass")
-        })
+       }
+      };
+
+      axios
+        .get(this.url, options)
         .then((red) => {
           if (red.data == "ไม่พบข้อมูล") {
             this.getall = 0;
           } else {
             this.getall = red.data;
-            
+            console.log(this.getall);
           }
         });
 
-      axios
-        .post("http://localhost:/PJ1/connect.php", {
-          action: "statusdata2",
+
+        const options2 = {
+      params: {
+        action: "statusdata2",
           pass: localStorage.getItem("pass")
-        })
+       }
+      };
+
+      axios
+        .get(this.url , options2)
         .then((red) => {
           if (red.data == "ไม่พบข้อมูล") {
             this.getall2 = 0;
           } else {
             this.getall2 = red.data;
-            
+            console.log(this.getall2);
           }
         });
     },
@@ -108,7 +118,7 @@ export default {
     },
   },
   created() {
-    this.checklogin();
+    // this.checklogin();
     this.getalldata();
     localStorage.removeItem("correct");
   },

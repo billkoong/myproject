@@ -1,42 +1,5 @@
 <template>
-    <!-- <h1 id="font0">อัปเดตรายการขอซ่อมหลังจากการอนุมัติ</h1>
-    <div class="tb1">
-      <table>
-        <tr>
-          <th>ที่</th>
-          <th>ทรัพย์สินที่ต้องการซ่อม</th>
-          <th>หมายเลขครุภัณฑ์</th>
-          <th>สภาพชำรุดโดยละเอียด</th>
-          <th>สถานะ</th>
-          <th>รายละเอียด</th>
-        </tr>
-        <tr v-for="(item, index) in getall" :key="index" class="tb-bt">
-          <td style="text-align: center">{{ index + 1 }}</td>
-          <td>
-            <tr v-for="(item, index) in getall[index]" :key="index">
-              <td style="text-align: left">{{ item.RP_property }}</td>
-            </tr>
-          </td>
-          <td>
-            <tr v-for="(item, index) in getall[index]" :key="index">
-              <td style="text-align: center">{{ item.RP_property_number }}</td>
-            </tr>
-          </td>
-          <td>
-            <tr v-for="(item, index) in getall[index]" :key="index">
-              <td style="text-align: left">{{ item.RP_disrepair }}</td>
-            </tr>
-          </td>
-          <td style="text-align: center">{{ item[0].status }}</td>
   
-          <td style="text-align: center">
-            <button @click="adminReport2(item[0].ID_RP)" id="btn-tb1">
-              อัปเดตรายการขอซ่อม
-            </button>
-          </td>
-        </tr>
-      </table>
-    </div> -->
   
     <h1 id="font1">อัปเดตรายการขอซ่อมวัสดุในขั้นตอนสุดท้าย</h1>
     <div class="tb2">
@@ -89,6 +52,7 @@
         getall: "",
         getall2: "",
         id: "",
+        url: 'https://repairhiresystem.000webhostapp.com/con2.php'
       };
     },
     methods: {
@@ -99,23 +63,17 @@
         }
       },
       getalldata() {
+     
+      const options2 = {
+      params: {
+          action: "MPYcheck2",
+        }
+      };
+       
         axios
-          .post("http://localhost:/PJ1/connect.php", {
-            action: "MPYcheck",
-          })
+          .get(this.url , options2)
           .then((red) => {
-            // console.log(red.data);
-            if (red.data == "ไม่พบข้อมูล") {
-            } else {
-              this.getall = red.data;
-            }
-          });
-        axios
-          .post("http://localhost:/PJ1/connect.php", {
-            action: "MPYcheck2",
-          })
-          .then((red) => {
-            // console.log(red.data);
+            console.log(red.data);
             if (red.data == "ไม่พบข้อมูล") {
             } else {
               this.getall2 = red.data;

@@ -112,7 +112,8 @@ export default {
       update: localStorage.getItem("update"),
       unconfirns: '',
       Comments: '',
-      action: ''
+      action: '',
+      url: 'https://repairhiresystem.000webhostapp.com/con2.php'
       // getdatasave:"",
       // addfromupdate: [],
     };
@@ -120,11 +121,15 @@ export default {
   methods: {
     getID() {
       this.id = localStorage.getItem("ID_RP");
-      axios
-        .post("http://localhost:/PJ1/connect.php", {
-          id: this.id,
+
+      const options2 = {
+      params: {
+        id: this.id,
           action: "savedata",
-        })
+        }
+      };
+      axios
+        .get(this.url , options2)
         .then((red) => {
           this.getdata = red.data;
           if(this.getdata[0].status == "อนุมัติแล้วกำลังดำเนินการซ่อม"){
@@ -136,12 +141,15 @@ export default {
     },
     update1() {
       if (confirm("ยืนยันการอัปเดตสถานะเป็น "+this.action)) {
-        axios
-          .post("http://localhost:/PJ1/connect.php", {
+        const options2 = {
+      params: {
             id: this.id,
             comments: this.Comments,
             action: this.action,
-          })
+          }
+      };
+        axios
+          .get(this.url , options2 )
           .then((red) => {
             alert(red.data)
             this.$router.push({ name: "EmployeeHome" });

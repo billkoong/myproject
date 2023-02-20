@@ -208,7 +208,7 @@ export default {
       id: "",
       getdata: "",
       getdataMPY: "",
-      
+      url: 'https://repairhiresystem.000webhostapp.com/con2.php'
     };
   },
   mounted() {
@@ -219,12 +219,14 @@ export default {
     getID() {
 
       this.id = localStorage.getItem("ID_RP");
-    
-      axios
-        .post("http://localhost:/PJ1/connect.php", {
-          id: this.id,
+      const options2 = {
+      params: {
+        id: this.id,
           action: "savedata",
-        })
+        }
+      };
+      axios
+        .get(this.url , options2)
         .then((red) => {
           this.getdata = red.data;
           console.log(this.getdata);

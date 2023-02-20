@@ -109,47 +109,56 @@ export default {
       searchall: "ค้นหา",
       searchs: "",
       statuss: "ทั้งหมด",
+      url: 'https://repairhiresystem.000webhostapp.com/con2.php'
     };
   },
   methods: {
-    // checklogin() {
-    //   if (!localStorage.getItem("username")) {
-    //     this.$router.push({ name: "login" });
-    //   } else {
-    //   }
-    // },
+    checklogin() {
+      if (!localStorage.getItem("username")) {
+        this.$router.push({ name: "login" });
+      } else {
+      }
+    },
     getalldata() {
+      const options = {
+      params: {
+        action: "getalldata",
+       }
+      };
       axios
-        .post("http://localhost:/PJ1/connect.php", {
-          // search: this.searchs,
-          action: "getalldata",
-        })
+        .get(this.url, options)
         .then((red) => {
           this.getall = red.data;
-          // console.log(this.getall);
+          console.log(this.getall);
         });
     },
     search() {
       if (this.statuss != "ทั้งหมด") {
-        axios
-          .post("http://localhost:/PJ1/connect.php", {
-            search: this.searchs,
+        const options = {
+      params: {
+        search: this.searchs,
             status: this.statuss,
             action: "searcdata",
-          })
+       }
+      };
+        axios
+          .get(this.url, options)
           .then((red) => {
             this.searchall = red.data;
-            console.log(this.searchall);
+            // console.log(this.searchall);
           });
       } else {
-        axios
-          .post("http://localhost:/PJ1/connect.php", {
-            search: this.searchs,
+        const options = {
+      params: {
+        search: this.searchs,
             action: "searcalldata",
-          })
+       }
+      };
+        axios
+          .get(this.url, options)
           .then((red) => {
             this.searchall = red.data;
-            console.log(this.searchall);
+            // console.log(this.searchall);
           });
       }
     },

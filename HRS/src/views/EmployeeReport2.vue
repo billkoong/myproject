@@ -92,7 +92,8 @@ export default {
       ID_item: [],
       name_item: [],
       correct:localStorage.getItem("correct"),
-      al:''
+      al:'',
+      url: 'https://repairhiresystem.000webhostapp.com/con2.php'
     };
   },
   methods: {
@@ -105,11 +106,15 @@ export default {
     getID() {
       if (localStorage.getItem("ID")) {
         this.id = localStorage.getItem("ID");
-        axios
-          .post("http://localhost:/PJ1/connect.php", {
-            id: this.id,
+
+        const options = {
+      params: {
+        id: this.id,
             action: "searchdataMPY",
-          })
+        }
+      };
+        axios
+          .get(this.url , options)
           .then((red) => {
             this.getdata = red.data;
             // console.log(this.getdata);
@@ -122,11 +127,15 @@ export default {
                 
               }
               this.name_item.push(element.RP_property)
-            } axios
-              .post("http://localhost:/PJ1/connect.php", {
-                name_item: this.name_item,
+            }
+            const options2 = {
+      params: {
+        name_item: this.name_item,
                 action: "searchdataMPY2",
-              })
+        }
+      };
+            axios
+              .get(this.url , options2)
               .then((red) => {
                 // this.getdata = red.data;
                 // console.log(red.data);
@@ -145,16 +154,19 @@ export default {
 
     save(ID) {
       this.al = 1
-      axios
-        .post("http://localhost:/PJ1/connect.php", {
-          RC_limit: this.RC_limit,
+      const options2 = {
+      params: {
+        RC_limit: this.RC_limit,
           RC_latest_limit: this.RC_latest_limit,
           ID_item: this.ID_item,
           id: this.id,
           ID_AO: localStorage.getItem("username"),
           status: "รอการอนุมัติ",
           action: "MPYsave",
-        })
+        }
+      };
+      axios
+        .get(this.url , options2)
         .then((red) => {
           this.al = 2
           if(this.al == 2){

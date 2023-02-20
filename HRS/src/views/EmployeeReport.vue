@@ -65,6 +65,7 @@ export default {
       getall: "",
       getall2: "",
       id: "",
+      url: 'https://repairhiresystem.000webhostapp.com/con2.php'
     };
   },
 
@@ -76,23 +77,30 @@ export default {
       }
     },
     getalldata() {
+      const options = {
+      params: {
+        action: "statusdataemployee22",
+        }
+      };
       axios
-        .post("http://localhost:/PJ1/connect.php", {
-          action: "statusdataemployee",
-        })
+        .get(this.url , options)
         .then((red) => {
+          console.log(red.data);
           if (red.data == "ไม่พบข้อมูล") {
             this.getall = 0;
           } else {
             this.getall = red.data;
           }
         });
-
+        const options2 = {
+      params: {
+        action: "statusdataemployee2",
+        }
+      };
       axios
-        .post("http://localhost:/PJ1/connect.php", {
-          action: "statusdataemployee2",
-        })
+        .get(this.url , options2)
         .then((red) => {
+          console.log(red.data);
           if (red.data == "ไม่พบข้อมูล") {
             this.getall2 = 0;
           } else {

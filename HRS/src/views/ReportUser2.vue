@@ -33,6 +33,7 @@ export default {
   data() {
     return {
       id_user: localStorage.getItem("id_user"),
+      url: 'https://repairhiresystem.000webhostapp.com/con2.php'
     };
   },
   props: ["addfroms"],
@@ -46,16 +47,19 @@ export default {
       if (this.addfroms == 0) {
         alert("กรุณา add");
       } else {
-        axios
-          .post("http://localhost:/PJ1/connect.php", {
-            addfroms: this.addfroms,
+        const options = {
+      params: {
+        addfroms: this.addfroms,
             id_user: this.id_user,
             type: localStorage.getItem("type"),
             status: "ขอแจ้งซ่อมสำเร็จ",
             action: "submitfromdata",
-          })
+       }
+      };
+        axios
+          .get(this.url, options)
           .then((red) => {
-            if (red.data == "completed") {
+            if (red.data == "แจ้งซ่อมสำเร็จ") {
               alert(red.data);
               this.$router.push({ name: "Homeuser" });
             } else {

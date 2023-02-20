@@ -19,22 +19,24 @@
         <tr>
           <td>{{ index + 1 }}</td>
           <td>
-        <tr v-for="(item, index) in getdata.data1[0]" :key="index">
-          <td v-if="getdata.data1[0][index].RP_property">{{ getdata.data1[0][index].RP_property }}</td>
+        <tr v-for="(item, index) in getdata.data22" :key="index">
+          <td >
+            {{ getdata.data22[index].RP_property }}
+          </td>
         </tr>
         </td>
 
         <td>
-          <tr v-for="(item, index) in getdata.data1[0]" :key="index">
-            <td v-if="getdata.data1[0][index].RP_property">
-            {{getdata.data1[0][index].RP_property_number}}
+          <tr v-for="(item, index) in getdata.data22" :key="index">
+            <td >
+            {{getdata.data22[index].RP_property_number}}
             </td>
           </tr>
         </td>
         <td>
-          <tr v-for="(item, index) in getdata.data1[0]" :key="index">
-            <td v-if="getdata.data1[0][index].RP_property">{{
-              getdata.data1[0][index].RP_disrepair
+          <tr v-for="(item, index) in getdata.data22" :key="index">
+            <td v>{{
+              getdata.data22[index].RP_disrepair
             }}</td>
           </tr>
         </td>
@@ -92,6 +94,7 @@ export default {
       adminData: "",
       checked: false,
       checked2: false,
+      url: 'https://repairhiresystem.000webhostapp.com/con2.php'
     };
   },
   methods: {
@@ -100,16 +103,21 @@ export default {
       if (localStorage.getItem("ID")) {
         this.id = localStorage.getItem("ID");
         // เอาข้อมูลมาแสดงผล
-        axios
-          .post("http://localhost:/PJ1/connect.php", {
-            id: this.id,
+        const options = {
+      params: {
+        id: this.id,
             
             id_rc: localStorage.getItem("id_user"),
             action: "searchdata",
-          })
+       }
+      };
+        axios
+          .get(this.url , options)
           .then((red) => {
-            // console.log(red.data);
+            console.log(red.data);
             this.getdata = red.data;
+            
+            console.log(this.getdata.data22);
             if (!this.getdata.data1[0].RC_name) {
               this.adminName = this.getdata.data1[0].Fname + " " + this.getdata.data1[0].Lname
             } else {
@@ -121,7 +129,7 @@ export default {
             }else if(this.getdata.data1[0].RC_status == "สามารถซ่อมเองได้"){
               this.checked2  = true
             }
-            // console.log(this.getdata.data2);
+            console.log(this.getdata.data1);
           });
      
       }
@@ -138,9 +146,10 @@ export default {
             adminData: this.adminData,
           };
           this.addfromupdate.push(addfromnew1);
-          axios
-            .post("http://localhost:/PJ1/connect.php", {
-              RC_status: this.checked,
+          const options = {
+      params: {
+        id: this.id,
+        RC_status: this.checked,
               type: this.getdata.data1[0].type,
               agency: this.getdata.data1[0].agency,
               RP_count_unit:this.getdata.data1[0].RP_count_unit,
@@ -150,7 +159,10 @@ export default {
               RC_ID: localStorage.getItem("id_user"),
               status: "ช่างตรวจสอบแล้ว",
               action: "submitfromdataupdate",
-            })
+       }
+      };
+          axios
+            .get(this.url , options)
             .then((red) => {
               alert(red.data);
               this.$router.push({ name: "adminReport" });
@@ -170,9 +182,9 @@ export default {
             adminData: this.adminData,
           };
           this.addfromupdate.push(addfromnew1);
-          axios
-            .post("http://localhost:/PJ1/connect.php", {
-              RC_status: this.checked,
+          const options = {
+      params: {
+        RC_status: this.checked,
               type: this.getdata.data1[0].type,
               agency: this.getdata.data1[0].agency,
               RP_count_unit:this.getdata.data1[0].RP_count_unit,
@@ -182,7 +194,10 @@ export default {
               RC_ID: localStorage.getItem("id_user"),
               status: "ช่างตรวจสอบแล้ว",
               action: "savefromdataupdate",
-            })
+       }
+      };
+          axios
+            .get(this.url, options)
             .then((red) => {
               alert(red.data);
               this.$router.push({ name: "adminReport" });

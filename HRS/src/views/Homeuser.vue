@@ -22,21 +22,21 @@
           <td style="text-align: center">{{ index + 1 }}</td>
           <td >
             <tr v-for="(item, index) in getall[index]" :key="index" >
-              <td v-if="getall[0][index].RP_property" >
+              <td  >
                 {{ item.RP_property }}
               </td>
             </tr>
           </td>
           <td  >
             <tr v-for="(item, index) in getall[index]" :key="index" style="text-align: center;" >
-              <td v-if="getall[0][index].RP_property_number"  >
+              <td  >
                 {{ item.RP_property_number }}
               </td>
             </tr>
           </td>
           <td>
             <tr v-for="(item, index) in getall[index]" :key="index">
-              <td v-if="getall[0][index].RP_disrepair">
+              <td>
                 {{ item.RP_disrepair }}
               </td>
             </tr>
@@ -77,9 +77,11 @@ export default {
       searchall: "ค้นหา",
       searchs: "",
       statuss: "ทั้งหมด",
+      url: 'https://repairhiresystem.000webhostapp.com/con2.php'
     };
   },
   methods: {
+    
     checklogin() {
       if (!localStorage.getItem("username")) {
         this.$router.push({ name: "login" });
@@ -87,38 +89,46 @@ export default {
       }
     },
     getalldatame() {
-      axios
-        .post("http://localhost:/PJ1/connect.php", {
-          // search: this.searchs,
+      const options = {
+      params: {
           id_user: this.id_user,
           action: "getalldataMB",
-        })
+       }
+      };
+      axios
+        .get(this.url, options )
         .then((red) => {
           this.getall = red.data;
-          // console.log(this.getall);
+          console.log(this.getall);
         });
     },
     search() {
       if (this.statuss != "ทั้งหมด") {
-        axios
-          .post("http://localhost:/PJ1/connect.php", {
-            search: this.searchs,
+        const options = {
+      params: {
+        search: this.searchs,
             status: this.statuss,
             action: "searcdata",
-          })
+       }
+      };
+        axios
+          .get(this.url, options)
           .then((red) => {
             this.searchall = red.data;
-            // console.log(this.searchall);
+            console.log(this.searchall);
           });
       } else {
-        axios
-          .post("http://localhost:/PJ1/connect.php", {
-            search: this.searchs,
+        const options = {
+      params: {
+        search: this.searchs,
             action: "searcalldata",
-          })
+       }
+      };
+        axios
+          .post(this.url, options)
           .then((red) => {
             this.searchall = red.data;
-            // console.log(this.searchall);
+            console.log(this.searchall);
           });
       }
     },

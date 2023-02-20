@@ -40,7 +40,8 @@ export default {
       getall2: "",
       getall3: "",
       id: "",
-      windows: ''
+      windows: '',
+      url: 'https://repairhiresystem.000webhostapp.com/con2.php'
     };
   },
   components: {
@@ -66,10 +67,27 @@ export default {
       this.windows = 3
     },
     getalldata() {
+      const options = {
+      params: {
+          action: "statusdataemployee22",
+          
+        }
+      };
+      const options2 = {
+      params: {
+          
+          action: "MPYcheck",
+          
+        }
+      };
+      const options3 = {
+      params: {
+         
+          action: "MPYcheck2",
+        }
+      };
       axios
-        .post("http://localhost/PJ1/connect.php", {
-          action: "statusdataemployee",
-        })
+        .get(this.url, options)
         .then((red) => {
           if (red.data == "ไม่พบข้อมูล") {
             this.getall = 0;
@@ -79,9 +97,7 @@ export default {
           }
         });
         axios
-        .post("http://localhost/PJ1/connect.php", {
-          action: "MPYcheck",
-        })
+        .get(this.url, options2)
         .then((red) => {
           // console.log(red.data);
           if (red.data == "ไม่พบข้อมูล") {
@@ -93,9 +109,7 @@ export default {
 
         });
         axios
-        .post("http://localhost:/PJ1/connect.php", {
-          action: "MPYcheck2",
-        })
+        .get(this.url, options3)
         .then((red) => {
           // console.log(red.data);
           if (red.data == "ไม่พบข้อมูล") {
