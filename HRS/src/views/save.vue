@@ -170,7 +170,7 @@ export default {
     print() {
       localStorage.setItem("ID_RP", this.id);
       // this.$router.push({ name: "savepdf" });
-      window.open("http://localhost:8080/savePDF");
+      window.open("https://repairhiresystem.vercel.app/savepdf");
     },
   },
   created() {
