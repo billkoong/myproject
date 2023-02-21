@@ -32,7 +32,7 @@
                     <input type="text" ref="RP_property"  name="" id="property" placeholder="Durable articles or your property">
                 </p>
                 <p class="property"> หมายเลขครุภัณฑ์ <br>
-                    <input type="number" ref="RP_property_number" name="" id="property" placeholder="Number of Durable articles">
+                    <input type="text" ref="RP_property_number" name="" id="property" placeholder="Number of Durable articles">
                 </p>
                 <p class="property"> สภาพชำรุดโดยละเอียด <br>
                     <input type="text"  ref="RP_disrepair" name="" id="property" placeholder="Cause of dilapidation">

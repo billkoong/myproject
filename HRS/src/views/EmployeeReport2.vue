@@ -241,42 +241,6 @@ button {
   text-decoration: none;
 }
 
-.logonav {
-  cursor: pointer;
-  margin-right: auto;
-  color: #ffffff;
-  font-family: "Roboto", sans-serif;
-  font-weight: 800;
-  font-size: 22px;
-}
-
-.nav_links {
-  list-style: none;
-}
-
-.nav_links li {
-  display: inline-block;
-  padding: 0px 20px;
-}
-
-.nav_links li a {
-  transition: all 0.2s ease 0s;
-}
-.nav_links li a:hover {
-  color: #fab317;
-}
-
-.nav_links li #logout {
-  border-radius: 50px;
-  padding: 9px 20px;
-  transition: all 0.2s ease 0s;
-}
-.nav_links li #logout:hover {
-  background-color: rgb(197, 0, 39);
-  border-radius: 50px;
-  padding: 9px 20px;
-  color: #ffffff;
-}
 
 .detail {
   display: block;

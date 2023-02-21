@@ -31,27 +31,27 @@
         <tr>
           <td>1</td>
           <td>
-        <tr v-for="(item, index) in getdata[0]" :key="index">
+        <tr v-for="(item, index) in getdata" :key="index">
           <td v-if="getdata[0][index].RP_property"><br>{{ getdata[0][index].RP_property }} </td>
         </tr>
         </td>
         <td>
-          <tr v-for="(item, index) in getdata[0]" :key="index">
+          <tr v-for="(item, index) in getdata" :key="index">
             <td v-if="getdata[0][index].RP_property"><br>{{ getdata[0][index].RP_property_number }}</td>
           </tr>
         </td>
         <td>
-          <tr v-for="(item, index) in getdata[0]" :key="index">
+          <tr v-for="(item, index) in getdata" :key="index">
             <td v-if="getdata[0][index].RP_property"><br>{{ getdata[0][index].RP_disrepair }}</td>
           </tr>
         </td>
         <td >
-          <tr v-for="(item, index) in getdata[0]" :key="index" >
+          <tr v-for="(item, index) in getdata" :key="index" >
             <td v-if="getdata[0][index].RP_property" ><br>{{ getdata[0][index].RC_limit }}</td>
           </tr>
         </td>
         <td>
-          <tr v-for="(item, index) in getdata[0]" :key="index">
+          <tr v-for="(item, index) in getdata" :key="index">
             <td v-if="getdata[0][index].RP_property"><br>{{ getdata[0][index].RC_latest_limit }}</td>
           </tr>
         </td>
@@ -59,7 +59,7 @@
       </table>
     </div>
     <br>
-    <p id="namerpman">ชื่อผู้ตรวจเซ็ก : {{ getdata[0].RC_name }}</p>
+    <p id="namerpman">ชื่อผู้ตรวจสอบ : {{ getdata[0].RC_name }}</p>
     <p id="datecheck">วันที่ตรวจสอบ : {{ getdata[0].RC_date }}</p>
     <!-- <h2>เวลาที่ตรวจสอบ :{{getdataMPY[0].adminName}}</h2> -->
     <p id="result">ตรวจสอบการชำรุดแล้วพบว่า :   {{ getdata[0].RC_result }} </p>
@@ -131,6 +131,7 @@ export default {
       axios
         .get(this.url , options2)
         .then((red) => {
+          console.log(red.data);
           this.getdata = red.data;
           if(this.getdata[0].status == "อนุมัติแล้วกำลังดำเนินการซ่อม"){
             this.action = "กรรมการตรวจรับพัสดุเรียบร้อยแล้ว"
@@ -210,6 +211,10 @@ export default {
   display: flex;
   font-size: 140%;
   font-weight: 600;
+}
+samp {
+  position: relative;
+  top: 40px;
 }
 
 #date,

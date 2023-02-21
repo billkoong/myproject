@@ -1,7 +1,7 @@
 <template>
   <haderVue/>
 
-  <h2 id="font1">รายงานผลหลังการตรวจเช็กวัสดุ / ครุภัณฑ์</h2>
+  <h2 id="font1">รายงานผลหลังการตรวจสอบวัสดุ / ครุภัณฑ์</h2>
   <div class="detail" v-for="(item, index) in getdata.data1" :key="index">
     <p id="head">รายละเอียดการแจ้งซ่อมของผู้ใช้งาน</p>
     <p id="date">วันที่แจ้งซ่อม : {{ item.RP_date }}</p>
@@ -52,7 +52,7 @@
 
   <div class="for-rpman">
     <form action="">
-      <label id="name-rpman" for="">ชื่อผู้ตรวจเช็ก :
+      <label id="name-rpman" for="">ชื่อผู้ตรวจสอบ :
         <input id="p1" type="text" v-model="adminName" required /><br /></label>
 
         <div v-if="checked == checked2 " id="choose">* กรุณาเลือกเพียงตัวเลือกเดียว</div>

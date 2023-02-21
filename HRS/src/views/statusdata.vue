@@ -54,7 +54,7 @@
             <p v-if="item[0].status == 'อนุมัติแล้วกำลังดำเนินการซ่อม'" style="color: #FF9500;" > {{ item[0].status }}</p>
             <p v-if="item[0].status == 'ไม่ผ่านการอนุมัติ'" style="color: #ff0000;" > {{ item[0].status }}</p>
           </td>
-          <td ><button @click="check(item[0].ID_RP)" id="btn">ตรวจสอบ</button></td>
+          <td ><button @click="check(item[0].ID_RP)" id="btn1">ตรวจสอบ</button></td>
         </tr>
     </table>
     
@@ -65,7 +65,7 @@
         <th>หมายเลขครุภัณฑ์</th>
         <th>สภาพชำรุดโดยละเอียด</th>
         <th>สถานะ</th>
-        <th>รายละเอียด</th>
+        <th></th>
       </tr>
       <tr v-for="(item, index) in searchall" :key="index" >
         <td style="text-align: center;">{{ index + 1 }}</td>
@@ -81,7 +81,7 @@
             <p v-if="item.status == 'อนุมัติแล้วกำลังดำเนินการซ่อม'" style="color: #FF9500;" > {{ item.status }}</p>
             <p v-if="item.status == 'ไม่ผ่านการอนุมัติ'" style="color: #ff0000;" > {{ item.status }}</p>
         </td>
-        <td><button @click="check(item.ID_RP)" id="btn" >ตรวจสอบ</button></td>
+        <td><button @click="check(item.ID_RP)" id="btn1" >ตรวจสอบ</button></td>
       </tr>
     </table>
   </div> 
@@ -145,7 +145,7 @@ export default {
           .get(this.url, options)
           .then((red) => {
             this.searchall = red.data;
-            // console.log(this.searchall);
+            console.log(this.searchall);
           });
       } else {
         const options = {
@@ -158,7 +158,7 @@ export default {
           .get(this.url, options)
           .then((red) => {
             this.searchall = red.data;
-            // console.log(this.searchall);
+            console.log(this.searchall);
           });
       }
     },
@@ -204,42 +204,6 @@ button {
   font-size: 18px;
   color: #ffffff;
   text-decoration: none;
-}
-
-.logonav {
-  cursor: pointer;
-  margin-right: auto;
-  color: #ffffff;
-  font-family: "Roboto", sans-serif;
-  font-weight: 800;
-  font-size: 22px;
-}
-
-.nav_links {
-  list-style: none;
-}
-.nav_links li {
-  display: inline-block;
-  padding: 0px 20px;
-}
-
-.nav_links li a {
-  transition: all 0.2s ease 0s;
-}
-.nav_links li a:hover {
-  color: #fab317;
-}
-
-.nav_links li #logout {
-  border-radius: 50px;
-  padding: 9px 20px;
-  transition: all 0.2s ease 0s;
-}
-.nav_links li #logout:hover {
-  background-color: rgb(197, 0, 39);
-  border-radius: 50px;
-  padding: 9px 20px;
-  color: #ffffff;
 }
 
 .research {
@@ -289,8 +253,6 @@ button {
   display: flex;
   justify-content: center;
   position: relative;
-  width: auto;
-  height: auto;
   left: 2%;
   padding: 5px 25px;
 
@@ -303,9 +265,7 @@ button {
 }
 #btn:hover {
   background-color: #00204a;
-  border-radius: 10px;
   color: #fab317;
-  font-family: "Kanit", sans-serif;
 }
 
 .tb1 {
@@ -349,13 +309,19 @@ button {
   font-size: 120%;
   color: #ff0000;
 }
-#btn {
-  padding: 3px 15px;
+#btn1 {
+  display: flex;
+  justify-content: center;
+  padding: 5px 20px;
+  text-align: center;
+  border: 2px;
   background-color: #fab317;
   border-radius: 10px;
   color: #00204a;
+  font-size: 100%;
+  font-family: "Kanit", sans-serif;
 }
-#btn:hover {
+#btn1:hover {
   background-color: #00204a;
   border-radius: 10px;
   color:#fab317 ;

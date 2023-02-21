@@ -1,13 +1,13 @@
 <template>
 <haderVue/>
 
-  <h1 id="font0">รายการการตรวจเช็กซ่อมวัสดุ / ครุภัณฑ์ เพื่อขออนุมัติการซ่อมบำรุง</h1>
+  <h1 id="font0">รายการการตรวจสอบซ่อมวัสดุ / ครุภัณฑ์ เพื่อขออนุมัติการซ่อมบำรุง</h1>
   <div class="tb1">
     <table>
       <tr>
         <th>ลำดับที่</th>
         <th>ทรัพย์สินที่แจ้งซ่อม</th>
-        <th>ส่งรายละเอียดหลังการตรวจเช็ก</th>
+        <th>ส่งรายละเอียดหลังการตรวจสอบ</th>
       </tr>
       <tr v-for="(item, index) in getall" :key="index" class="tb-bt">
         <td>{{ index + 1 }}</td>
@@ -19,18 +19,18 @@
       </tr>
       </td>
       <td>
-        <button @click="adminReport2(item[0].ID_RP)" id="btn-tb1">รายงานการตรวจเช็ก</button>
+        <button @click="adminReport2(item[0].ID_RP)" id="btn-tb1">รายงานการตรวจสอบ</button>
       </td>
       </tr>
     </table>
   </div>
-  <h1 id="font">รายการการส่งรายละเอียดหลังการตรวจเช็ก (สามารถแก้ไขได้)</h1>
+  <h1 id="font">รายการการส่งรายละเอียดหลังการตรวจสอบ (สามารถแก้ไขได้)</h1>
   <div class="tb2">
     <table>
       <tr>
         <th>ลำดับที่</th>
         <th>ทรัพย์สินที่แจ้งซ่อม</th>
-        <th>ส่งรายละเอียดการตรวจเช็ก</th>
+        <th>ส่งรายละเอียดการตรวจสอบ</th>
       </tr>
       <tr v-for="(item, index) in getall2" :key="index" class="tb-bt">
         <td>{{ index + 1 }}</td>
