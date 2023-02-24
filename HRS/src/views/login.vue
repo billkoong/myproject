@@ -54,30 +54,22 @@ export default {
               if(red.data[0].agency == "หน่วยพัสดุ"){
                 localStorage.setItem("id_user", red.data[0].ID_MB);
                 localStorage.setItem("pass" , "AO");
-                this.$router.push({ name: "EmployeeHome" });
+                this.$router.push({  name: "home" });
               }else if(red.data[0].agency == "หน่วยเทคโนโลยีและสารสนเทศ"){
                 localStorage.setItem("id_user", red.data[0].ID_MB);
                 localStorage.setItem("pass" , "ครุภัณฑ์อิเล็กทรอนิกส์ เช่น คอมพิวเตอร์ โน็ตบุ๊ก TV");
-                this.$router.push({ name: "adminReport" });
+                this.$router.push({  name: "home"  });
               }else if(red.data[0].agency == "หน่วยงานอาคารและสถานที่"){
                 localStorage.setItem("id_user", red.data[0].ID_MB);
                 localStorage.setItem("pass" , "ครุภัณฑ์ทั่วไป เช่น พัดลม แอร์ หน้าต่าง");
-                this.$router.push({ name: "adminReport" });
+                this.$router.push({  name: "home"  });
               }else{
                 localStorage.setItem("id_user", red.data[0].ID_MB);
                 this.$router.push({ name: "home" });
               }
             }
           });
-    },
-    adminReport2(ID) {
-      localStorage.setItem("ID", ID);
-      this.$router.push({ name: "EmployeeReport2" });
-    },
-    register() {
-      this.$router.push({ name: "register" });
-    }
-    
+    }, 
   },
   created(){
     localStorage.clear();

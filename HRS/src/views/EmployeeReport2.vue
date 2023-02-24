@@ -1,12 +1,7 @@
 <template>
 <haderVue/>
-
-
-
   <div class="al" v-if="al == 1"><img src="../assets/Circles-menu-3.gif" alt=""> <br> <p class="loading">กำลังส่งข้อมูล</p> </div>
   <div class="al2" v-if="al == 2"> ส่งข้อมูลสำเร็จ </div>
-
-
 
   <h2 id="font1">กำหนดวงเงินในการซ่อม</h2>
   <div class="detail" v-for="(item, index) in getdata.data1" :key="index">

@@ -192,7 +192,10 @@ export default {
   padding: 0;
   font-family: "Kanit", sans-serif;
 }
-
+.tb-l {
+  border-left: 3px solid #00204a;
+  border-collapse: collapse;
+}
 .sum {
   display: block;
   justify-content: center;

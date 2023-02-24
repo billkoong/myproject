@@ -1,17 +1,17 @@
 <template>
 <haderVue/>
   <div class="btn">
-    <div class="btn1"><button @click="RP" class="imposes"><p > รายการขออนุมัติวงเงินการซ่อมวัสดุ / ครุภัณฑ์ </p> 
+    <div class="btn1"><button @click="RP" class="imposes"><p> รายการขออนุมัติวงเงินการซ่อมวัสดุ / ครุภัณฑ์ </p> 
       <div class="num" v-if="getall !=0 "><samp  class="warn">{{ getall }}</samp> 
       </div> 
     </button>
   </div>
-    <div class="btn2"><button @click="RP2" class="imposes"><p >อัปเดตรายการขอซ่อมวัสดุ / ครุภัณฑ์ </p>
+    <div class="btn1"><button @click="RP2" class="imposes"><p> อัปเดตรายการขอซ่อมวัสดุ / ครุภัณฑ์ </p>
       <div class="num" v-if="getall2 !=0 "><samp  class="warn" >{{ getall2 }} </samp>
       </div>
     </button> 
   </div>
-  <div class="btn2"><button @click="RP3" class="imposes"><p >อัปเดตรายการขอซ่อมวัสดุในขั้นตอนสุดท้าย </p>
+    <div class="btn1"><button @click="RP3" class="imposes"><p> อัปเดตรายการขอซ่อมวัสดุในขั้นตอนสุดท้าย </p>
       <div class="num" v-if="getall3 !=0 "><samp  class="warn" >{{ getall3 }}</samp>
       </div>
     </button> 
@@ -147,19 +147,21 @@ header {
 .num {
   justify-content: right;
   display: flex;
-  width: 105%;
+  width: 120%;
   position: relative;
   top: -60px;
+  /* border: 2px solid green; */
 }
 .warn{
   display: flex;
   justify-content: center;
   background-color: red;
   color: #ffffff;
-  width: 10%;
+  width: 13%;
   padding: 5px 10px;
   border-radius: 50px;
 }
+
 li,
 a,
 button {
@@ -180,8 +182,8 @@ button {
 }
 .imposes {
   width: 100%;
-  height: 50px;
-  padding: 10px 40px;
+  height: 55%;
+  padding: 10px 30px;
   background: #fab317;
   color: #00204a; 
   border-radius: 20px;
@@ -190,24 +192,10 @@ button {
   background: #00204a;
   color: #fab317;
 }
-
 .imposes:focus{
   background: #00204a;
   color: #fab317;
 }
-
-.update {
-  width: 100%;
-  padding: 10px 70px;
-  background: #fab317;
-  color: #00204a; 
-  border-radius: 20px;
-}
-.update:hover {
-  background: #00204a;
-  color: #fab317;
-}
-
 
 button {
   border-radius: 20px;
@@ -221,6 +209,6 @@ button {
   color: #ff0000;
   font-size: 80%;
   position: relative;
-  top: -10px;
+  top: -50px;
 }
 </style>

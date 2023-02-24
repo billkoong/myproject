@@ -1,5 +1,5 @@
 <template>
-  <h1 id="font0">อัปเดตรายการขอซ่อมหลังจากการอนุมัติ</h1>
+  <h1 id="font0">อัปเดตรายการขอซ่อมหลังจากผ่านการอนุมัติ</h1>
   <div class="tb1">
     <table>
       <tr>
@@ -12,24 +12,24 @@
       </tr>
       <tr v-for="(item, index) in getall" :key="index" class="tb-bt">
         <td style="text-align: center">{{ index + 1 }}</td>
-        <td>
+        <td class="tb-l">
           <tr v-for="(item, index) in getall[index]" :key="index">
             <td style="text-align: left">{{ item.RP_property }}</td>
           </tr>
         </td>
-        <td>
+        <td class="tb-l">
           <tr v-for="(item, index) in getall[index]" :key="index">
             <td style="text-align: center">{{ item.RP_property_number }}</td>
           </tr>
         </td>
-        <td>
+        <td class="tb-l">
           <tr v-for="(item, index) in getall[index]" :key="index">
             <td style="text-align: left">{{ item.RP_disrepair }}</td>
           </tr>
         </td>
-        <td style="text-align: center">{{ item[0].status }}</td>
+        <td style="text-align: center" class="tb-l">{{ item[0].status }}</td>
 
-        <td style="text-align: center">
+        <td style="text-align: center" class="tb-l">
           <button @click="adminReport2(item[0].ID_RP)" id="btn-tb1">
             อัปเดตรายการขอซ่อม
           </button>
@@ -37,7 +37,7 @@
       </tr>
     </table>
   </div>
-
+<div class="c"></div>
 </template>
 
 <script>
@@ -114,6 +114,10 @@ export default {
   margin: 0;
   padding: 0;
   font-family: "Kanit", sans-serif;
+}
+.tb-l {
+  border-left: 3px solid #00204a;
+  border-collapse: collapse;
 }
 #font0 {
   display: flex;

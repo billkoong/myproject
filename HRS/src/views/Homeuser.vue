@@ -19,30 +19,25 @@
           <th>รายละเอียด</th>
         </tr>
         <tr v-for="(item, index) in getall" :key="index" class="tb-bt" >
-          <td style="text-align: center">{{ index + 1 }}</td>
-          <td >
+          <td style="text-align: center" >{{ index + 1 }}</td>
+          <td class="tb-l">
             <tr v-for="(item, index) in getall[index]" :key="index" >
-              <td  >
-                {{ item.RP_property }}
+              <td  >{{ item.RP_property }}
               </td>
             </tr>
           </td>
-          <td  >
+          <td class="tb-l" >
             <tr v-for="(item, index) in getall[index]" :key="index" style="text-align: center;" >
-              <td  >
-                {{ item.RP_property_number }}
-              </td>
+              <td style="text-align: center" >{{ item.RP_property_number }}</td>
             </tr>
           </td>
-          <td>
+          <td class="tb-l">
             <tr v-for="(item, index) in getall[index]" :key="index">
-              <td>
-                {{ item.RP_disrepair }}
-              </td>
+              <td>{{ item.RP_disrepair }}</td>
             </tr>
           </td>
-          <td style="text-align: center">{{ item[0].status }}</td>
-          <td style="text-align: center">
+          <td style="text-align: center" class="tb-l">{{ item[0].status }}</td>
+          <td style="text-align: center" class="tb-l">
             <button @click="check(item[0].ID_RP)">ตรวจสอบ</button>
           </td>
         </tr>
@@ -153,6 +148,10 @@ export default {
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,500;0,600;0,700;0,800;0,900;1,800&family=Noto+Sans+Thai+Looped:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+.tb-l {
+  border-left: 3px solid #00204a;
+  border-collapse: collapse;
+}
 .notfound {
   display: flex;
   justify-content: center;
@@ -218,7 +217,7 @@ button {
   font-family: "Kanit", sans-serif;
   background: #fab317;
   border: #fab317;
-  border-radius: 20px;
+  border-radius: 10px;
   padding: 5px 20px;
   color: #00204a;
   font-weight: 600;

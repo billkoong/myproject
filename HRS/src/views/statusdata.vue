@@ -2,7 +2,7 @@
 <haderVue/>
   
   <div class="research">
-    <p id="search">ค้นหา <input type="text" v-model="searchs" id="ip1" /></p> <br>
+    <p id="search">ค้นหา <input type="text" v-model="searchs" id="ip1" placeholder="พิมพ์ชื่อวัสดุและครุภัณฑ์ที่ต้องการค้นหา..."/></p> <br>
     <p id="status">
       สถานะ
       <select name="" id="select" v-model="statuss">
@@ -12,7 +12,7 @@
     </p>
   </div>
 
-  <div v-if="searchall == ''" id="tb1">
+  <div v-if="searchall == ''" id="tb2">
     <p id="found">ไม่พบข้อมูล</p>
   </div>
   
@@ -28,24 +28,23 @@
       </tr>
       <tr v-for="(item, index) in getall" :key="index" class="tb-bt">
           <td style="text-align: center;">{{ index + 1 }}</td>
-          <td>
+          <td class="tb-l">
             <tr v-for="(item, index) in getall[index]" :key="index" >
               <td>{{item.RP_property}}</td>
             </tr>
           </td>
-
-          <td>
-            <tr v-for="(item, index) in getall[index]" :key="index" style="text-align: center;">
-              <td>{{item.RP_property_number}}</td>
+          <td class="tb-l">
+            <tr v-for="(item, index) in getall[index]" :key="index">
+              <td style="text-align: center;">{{item.RP_property_number}}</td>
             </tr>
           </td>
-          <td>
+          <td class="tb-l">
             <tr v-for="(item, index) in getall[index]" :key="index">
               <td>{{item.RP_disrepair}}</td>
             </tr>
           </td>
 
-          <td style="text-align: center;">
+          <td style="text-align: center; border-right: 3px solid #00204a;" class="tb-l">
             <p v-if="item[0].status == 'ซ่อมสำเร็จ'" style="color: green;" > {{ item[0].status }}</p>
             <p v-if="item[0].status == 'กรรมการตรวจรับพัสดุเรียบร้อยแล้ว'" style="color: green;" > {{ item[0].status }}</p>
             <p v-if="item[0].status == 'ขอแจ้งซ่อมสำเร็จ'" style="color: #FF9500;" > {{ item[0].status }}</p>
@@ -54,7 +53,7 @@
             <p v-if="item[0].status == 'อนุมัติแล้วกำลังดำเนินการซ่อม'" style="color: #FF9500;" > {{ item[0].status }}</p>
             <p v-if="item[0].status == 'ไม่ผ่านการอนุมัติ'" style="color: #ff0000;" > {{ item[0].status }}</p>
           </td>
-          <td ><button @click="check(item[0].ID_RP)" id="btn1">ตรวจสอบ</button></td>
+          <td style="display: flex; justify-content: center; position: relative; top: 5px;"><button @click="check(item[0].ID_RP)" id="btn1">ตรวจสอบ</button></td>
         </tr>
     </table>
     
@@ -65,14 +64,14 @@
         <th>หมายเลขครุภัณฑ์</th>
         <th>สภาพชำรุดโดยละเอียด</th>
         <th>สถานะ</th>
-        <th></th>
+        <th>รายละเอียด</th>
       </tr>
       <tr v-for="(item, index) in searchall" :key="index" >
-        <td style="text-align: center;">{{ index + 1 }}</td>
-        <td>{{ item.RP_property }}</td>
-        <td style="text-align: center;">{{ item.RP_property_number }}</td>
-        <td>{{ item.RP_disrepair }}</td>
-        <td style="text-align: center;">            
+        <td style="text-align: center;" class="tb-l">{{ index + 1 }}</td>
+        <td class="tb-l">{{ item.RP_property }}</td>
+        <td style="text-align: center;" class="tb-l">{{ item.RP_property_number }}</td>
+        <td class="tb-l">{{ item.RP_disrepair }}</td>
+        <td style="text-align: center;" class="tb-l">            
             <p v-if="item.status == 'ซ่อมสำเร็จ'" style="color: green;" > {{ item.status }}</p>
             <p v-if="item.status == 'กรรมการตรวจรับพัสดุเรียบร้อยแล้ว'" style="color: green;" > {{ item.status }}</p>
             <p v-if="item.status == 'ขอแจ้งซ่อมสำเร็จ'" style="color: #FF9500;" > {{ item.status }}</p>
@@ -81,10 +80,10 @@
             <p v-if="item.status == 'อนุมัติแล้วกำลังดำเนินการซ่อม'" style="color: #FF9500;" > {{ item.status }}</p>
             <p v-if="item.status == 'ไม่ผ่านการอนุมัติ'" style="color: #ff0000;" > {{ item.status }}</p>
         </td>
-        <td><button @click="check(item.ID_RP)" id="btn1" >ตรวจสอบ</button></td>
+        <td style="display: flex; justify-content: center;" class="tb-l"><button @click="check(item.ID_RP)" id="btn1" >ตรวจสอบ</button></td>
       </tr>
     </table>
-  </div> 
+  </div>
 <div class="c"></div>
 </template>
 
@@ -196,16 +195,6 @@ header {
   align-items: center;
   padding: 5px 10%;
 }
-li,
-a,
-button {
-  font-family: "Roboto", sans-serif;
-  font-weight: 600;
-  font-size: 18px;
-  color: #ffffff;
-  text-decoration: none;
-}
-
 .research {
   display: block;
   justify-content: center;
@@ -245,10 +234,11 @@ button {
 
   padding: 4px 15px;
   font-family: "Kanit", sans-serif;
-  font-size: 80%;
+  font-size: 85%;
   border-radius: 5px;
   border: 2px solid black;
 }
+
 #btn {
   display: flex;
   justify-content: center;
@@ -293,14 +283,23 @@ button {
   padding: 5px 5px;
   font-size: 110%;
   font-size: 95%;
+  /* border-left: 3px solid #00204a; */
+}
+.tb1 .tb-l {
+  border-left: 3px solid #00204a;
+  border-collapse: collapse;
 }
 .tb1 .tb-bt {
   border-bottom: 3px solid #00204a;
 }
 .tb2 tr{
   border-bottom: 3px solid #00204a;
-
 }
+.tb2 .tb-l {
+  border-left: 3px solid #00204a;
+  border-collapse: collapse;
+}
+
 #found {
   text-align: center;
   position: relative;
@@ -309,9 +308,9 @@ button {
   font-size: 120%;
   color: #ff0000;
 }
-#btn1 {
-  display: flex;
-  justify-content: center;
+
+
+#btn1 { 
   padding: 5px 20px;
   text-align: center;
   border: 2px;

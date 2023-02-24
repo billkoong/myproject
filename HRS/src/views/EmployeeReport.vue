@@ -9,14 +9,12 @@
       </tr>
       <tr v-for="(item, index) in getall" :key="index" class="tb-bt">
         <td>{{ index + 1 }}</td>
-        <td>
-      <tr v-for="(item, index) in getall[index]" :key="index">
-        <td style="text-align: left;" >{{
-          item.RP_property
-        }}</td>
+        <td class="tb-l">
+          <tr v-for="(item, index) in getall[index]" :key="index">
+        <td style="text-align: left;">{{item.RP_property}}</td>
       </tr>
       </td>
-      <td>
+      <td class="tb-l">
         <button @click="adminReport2(item[0].ID_RP)" id="btn-tb1">
           กำหนดวงเงินการซ่อม
         </button>
@@ -27,7 +25,7 @@
 
  
   <div v-if="getall2 != 0">
-     <h1 id="font">แก้ไข รายการขออนุมัติวงเงินการซ่อมวัสดุ / ครุภัณฑ์</h1>
+     <h1 id="font">แก้ไขรายการขออนุมัติวงเงินการซ่อมวัสดุ / ครุภัณฑ์</h1>
      <div class="tb2">
     <table>
       <tr>
@@ -37,16 +35,14 @@
       </tr>
       <tr v-for="(item, index) in getall2" :key="index" class="tb-bt">
         <td>{{ index + 1 }}</td>
-        <td>
-      <tr v-for="(item, index) in getall2[index]" :key="index" style="justify-items: center;">
-        <td style="text-align: left;" >{{
-          item.RP_property
-        }}</td>
+        <td class="tb-l">
+          <tr v-for="(item, index) in getall2[index]" :key="index" style="justify-items: center;">
+        <td style="text-align: left;" >{{item.RP_property}}</td>
       </tr>
       </td>
-      <td>
+      <td class="tb-l">
         <!-- <button @click="printPDF(item[0].ID_RP)" id="btn-tb2">พิมพ์</button> -->
-        <button @click="correct(item[0].ID_RP)" id="btn-tb3">แก้ไข</button>
+        <button @click="correct(item[0].ID_RP)" id="btn-tb3" >แก้ไข</button>
       </td>
       </tr>
     </table>
@@ -142,6 +138,11 @@ export default {
   padding: 0;
   font-family: "Kanit", sans-serif;
 }
+.tb-l {
+  border-left: 3px solid #00204a;
+  border-collapse: collapse;
+}
+
 #font {
   display: flex;
   justify-content: center;
